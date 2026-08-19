@@ -1,0 +1,113 @@
+CompileFlags:
+  Add:
+    - -xc # Force C language 
+    - -std=gnu23 
+    - -DPACKAGE_NAME=\"tmux\" 
+    - -DPACKAGE_TARNAME=\"tmux\" 
+    - -DPACKAGE_VERSION=\"next-3.8\" 
+    - -DPACKAGE_STRING=\"tmux\ next-3.8\" 
+    - -DPACKAGE_BUGREPORT=\"\" 
+    - -DPACKAGE_URL=\"\"
+    - -DPACKAGE=\"tmux\" 
+    - -DVERSION=\"next-3.8\" 
+    - -DHAVE_STDIO_H=1
+    - -DHAVE_STDLIB_H=1
+    - -DHAVE_STRING_H=1
+    - -DHAVE_INTTYPES_H=1 
+    - -DHAVE_STDINT_H=1 
+    - -DHAVE_STRINGS_H=1 
+    - -DHAVE_SYS_STAT_H=1 
+    - -DHAVE_SYS_TYPES_H=1 
+    - -DHAVE_UNISTD_H=1 
+    - -DHAVE_WCHAR_H=1 
+    - -DSTDC_HEADERS=1 
+    - -D_ALL_SOURCE=1 
+    - -D_COSMO_SOURCE=1 
+    - -D_DARWIN_C_SOURCE=1 
+    - -D_GNU_SOURCE=1 
+    - -D_HPUX_ALT_XOPEN_SOCKET_API=1 
+    - -D_NETBSD_SOURCE=1 
+    - -D_OPENBSD_SOURCE=1 
+    - -D_POSIX_PTHREAD_SEMANTICS=1 
+    - -D__STDC_WANT_IEC_60559_ATTRIBS_EXT__=1 
+    - -D__STDC_WANT_IEC_60559_BFP_EXT__=1 
+    - -D__STDC_WANT_IEC_60559_DFP_EXT__=1 
+    - -D__STDC_WANT_IEC_60559_EXT__=1 
+    - -D__STDC_WANT_IEC_60559_FUNCS_EXT__=1 
+    - -D__STDC_WANT_IEC_60559_TYPES_EXT__=1 
+    - -D__STDC_WANT_LIB_EXT2__=1 
+    - -D__STDC_WANT_MATH_SPEC_FUNCS__=1 
+    - -D_TANDEM_SOURCE=1 
+    - -D__EXTENSIONS__=1 
+    - -DHAVE_BITSTRING_H=1     
+    - -DHAVE_DIRENT_H=1 
+    - -DHAVE_FCNTL_H=1 
+    - -DHAVE_INTTYPES_H=1 
+    - -DHAVE_LIBPROC_H=1 
+    - -DHAVE_PATHS_H=1 
+    - -DHAVE_STDINT_H=1 
+    - -DHAVE_SYS_DIR_H=1 
+    - -DHAVE_UTIL_H=1 
+    - -DHAVE_SYS_SIGNAME=1 
+    - -DHAVE_LIBM=1 
+    - -DHAVE_DIRFD=1 
+    - -DHAVE_FLOCK=1 
+    - -DHAVE_PROC_PIDINFO=1 
+    - -DHAVE_SYSCONF=1 
+    - -DHAVE_ASPRINTF=1 
+    - -DHAVE_CFMAKERAW=1 
+    - -DHAVE_CLOCK_GETTIME=1 
+    - -DHAVE_GETDTABLESIZE=1 
+    - -DHAVE_GETPEEREID=1 
+    - -DHAVE_GETLINE=1 
+    - -DHAVE_GETPROGNAME=1 
+    - -DHAVE_MEMMEM=1 
+    - -DHAVE_SETENV=1 
+    - -DHAVE_STRCASESTR=1 
+    - -DHAVE_STRLCAT=1 
+    - -DHAVE_STRLCPY=1 
+    - -DHAVE_STRNDUP=1 
+    - -DHAVE_STRSEP=1 
+    - -DHAVE_STRTONUM=1 
+    - -DHAVE_EVENT2_EVENT_H=1 
+    - -DHAVE_NCURSES_H=1 
+    - -DHAVE_TIPARM=1 
+    - -DHAVE_TIPARM_S=1 
+    - -DHAVE_UTF8PROC=1 
+    - -DHAVE_B64_NTOP=1 
+    - -DHAVE_JEMALLOC=1 
+    - -DHAVE_DAEMON=1 
+    - -DHAVE_FORKPTY=1 
+    - -DHAVE___PROGNAME=1 
+    - -DBROKEN___DEAD=1 
+    - -DBROKEN_CMSG_FIRSTHDR=1 
+    - -I.  
+    - -I/opt/homebrew/Cellar/jemalloc/5.3.1/include 
+    - -I/opt/homebrew/Cellar/utf8proc/HEAD-3de4596/include 
+    - -DUTF8PROC_EXPORTS -D_DARWIN_C_SOURCE 
+    - -I/opt/homebrew/Cellar/libevent/2.1.12_1/include 
+    - -DTMUX_VERSION='"next-3.8"' 
+    - -DTMUX_CONF='"/etc/tmux.conf:~/.tmux.conf:$XDG_CONFIG_HOME/tmux/tmux.conf:~/.config/tmux/tmux.conf"' 
+    - -DTMUX_LOCK_CMD='"lock -np"' 
+    - -DTMUX_TERM='"tmux-256color"' 
+    - -DTMUX_MOUSE=1 
+    - -DDEBUG 
+    - -iquote.         
+    - -std=gnu99 
+    - -O2  
+    - -g3 
+    - -ggdb 
+    - -Wno-long-long 
+    - -Wall 
+    - -W 
+    - -Wformat=2 -Wno-use-after-free -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations -Wwrite-strings -Wshadow -Wpointer-arith -Wsign-compare -Wundef -Wbad-function-cast -Winline -Wno-cast-align -Wdeclaration-after-statement -Wno-pointer-sign -Wno-attributes -Wno-unused-result -Wno-format-y2k -Wno-unknown-warning-option -Wno-maybe-uninitialized -Wno-deprecated-declarations -Wno-macro-redefined   -I/opt/homebrew/include  -MT compat/daemon.o -MD -MP -MF 
+  #  - -std=c23 # Use C23 standard
+  #  - -I/opt/homebrew/include
+  #  - -I/opt/homebrew/
+  #  - -I/opt/hombrew/Cellar/jemalloc/5.3.1/include
+  #  - -I/opt/homebrew/Cellar/libevent/2.1.12_1/include
+    #- -I/Users/taadimap/git/personal/include
+  Remove: 
+    - -I/Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk/usr/include
+    - -I/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include
+    - -I/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk/usr/include

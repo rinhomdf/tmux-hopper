@@ -26,6 +26,7 @@
 #include <unistd.h>
 
 #include "tmux.h"
+#include "hopper.h"
 
 /*
  * Create a new session and attach to the current terminal unless -d is given.
@@ -97,6 +98,24 @@ cmd_new_session_exec(struct cmd *self, struct cmdq_item *item)
 	if (args_has(args, 't') && (count != 0 || args_has(args, 'n'))) {
 		cmdq_error(item, "command or window name given with target");
 		return (CMD_RETURN_ERROR);
+	}
+
+	/*
+	 * tmux-hopper: if the first positional arg names a YAML-configured
+	 * session (or type + value), synthesise the equivalent tmux command
+	 * sequence and return before running the stock new-session path.
+	 */
+	{
+		int	hop, hop_detached;
+
+		hop_detached = args_has(args, 'd');
+		if (c == NULL)
+			hop_detached = 1;
+		hop = hopper_new_session_hook(self, item, hop_detached);
+		if (hop == 1)
+			return (CMD_RETURN_NORMAL);
+		if (hop < 0)
+			return (CMD_RETURN_ERROR);
 	}
 
 	if ((tmp = args_get(args, 'n')) != NULL) {

@@ -1,0 +1,38 @@
+# tmux-hopper example config
+#
+# Location (first match wins):
+#   1. $TMUX_HOPPER_CONFIG
+#   2. $XDG_CONFIG_HOME/tmux-hopper/hopper.yaml
+#   3. ~/.config/tmux-hopper/hopper.yaml
+#
+# Usage:
+#   tmux new-session <name>          # match by session name
+#   tmux new-session <type> <value>  # match by type, substitute {{value}}
+#
+# When no positional argument is given, or the argument matches no entry,
+# tmux behaves exactly like upstream.
+
+sessions:
+  # Concrete, named session. `tmux new-session gitlab-runners`.
+  - name: gitlab-runners
+    windows:
+      - name: prod
+        ssh: jump-1                 # sugar for: send-keys 'ssh jump-1' Enter
+        commands:
+          - ssh jump-2
+          - ssh prod
+          - . setenv
+      - name: dev
+        ssh: jump-1
+        commands:
+          - ssh jump-2
+
+  # Templated session. `tmux new-session single-jump-template my-host`
+  # creates a session named "single-jump-template-my-host" containing
+  # one window "single_my-host" that ssh-hops jump-1 -> my-host.
+  - type: single-jump-template
+    windows:
+      - name: single_{{value}}
+        ssh: jump-1
+        commands:
+          - ssh {{value}}

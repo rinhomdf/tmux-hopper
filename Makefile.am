@@ -1,12 +1,12 @@
 # Obvious program stuff.
-bin_PROGRAMS = tmux
+bin_PROGRAMS = tmux-hopper
 CLEANFILES = tmux.1.mdoc tmux.1.man cmd-parse.c
 
 # Distribution tarball options.
 EXTRA_DIST = \
 	CHANGES README COPYING example_tmux.conf \
 	osdep-*.c mdoc2man.awk tmux.1
-dist_EXTRA_tmux_SOURCES = compat/*.[ch]
+dist_EXTRA_tmux_hopper_SOURCES = compat/*.[ch]
 
 # Preprocessor flags.
 AM_CPPFLAGS += @XOPEN_DEFINES@ \
@@ -14,7 +14,9 @@ AM_CPPFLAGS += @XOPEN_DEFINES@ \
 	-DTMUX_CONF='"$(sysconfdir)/tmux.conf:~/.tmux.conf:$$XDG_CONFIG_HOME/tmux/tmux.conf:~/.config/tmux/tmux.conf"' \
 	-DTMUX_LOCK_CMD='"@DEFAULT_LOCK_CMD@"' \
 	-DTMUX_TERM='"@DEFAULT_TERM@"' \
-	-DTMUX_MOUSE=1
+	-DTMUX_MOUSE=1 \
+	-DYAML_VERSION_MAJOR=0 -DYAML_VERSION_MINOR=2 -DYAML_VERSION_PATCH=5 \
+	-DYAML_VERSION_STRING='"0.2.5"'
 
 # Additional object files.
 LDADD = $(LIBOBJS)
@@ -84,7 +86,7 @@ AM_CPPFLAGS += -DTMUX_SOCK_PERM=0
 endif
 
 # List of sources.
-dist_tmux_SOURCES = \
+dist_tmux_hopper_SOURCES = \
 	alerts.c \
 	arguments.c \
 	attributes.c \
@@ -170,6 +172,15 @@ dist_tmux_SOURCES = \
 	grid-view.c \
 	grid.c \
 	hooks.c \
+	hopper.c \
+	compat/yaml/api.c \
+	compat/yaml/dumper.c \
+	compat/yaml/emitter.c \
+	compat/yaml/loader.c \
+	compat/yaml/parser.c \
+	compat/yaml/reader.c \
+	compat/yaml/scanner.c \
+	compat/yaml/writer.c \
 	hyperlinks.c \
 	input-keys.c \
 	input.c \
@@ -229,26 +240,26 @@ dist_tmux_SOURCES = \
 	window.c \
 	xmalloc.c \
 	xmalloc.h
-nodist_tmux_SOURCES = osdep-@PLATFORM@.c
+nodist_tmux_hopper_SOURCES = osdep-@PLATFORM@.c
 
 # Add compat file for forkpty.
 if NEED_FORKPTY
-nodist_tmux_SOURCES += compat/forkpty-@PLATFORM@.c
+nodist_tmux_hopper_SOURCES += compat/forkpty-@PLATFORM@.c
 endif
 
 # Add compat file for systemd.
 if HAVE_SYSTEMD
-nodist_tmux_SOURCES += compat/systemd.c
+nodist_tmux_hopper_SOURCES += compat/systemd.c
 endif
 
 # Add compat file for utf8proc.
 if HAVE_UTF8PROC
-nodist_tmux_SOURCES += compat/utf8proc.c
+nodist_tmux_hopper_SOURCES += compat/utf8proc.c
 endif
 
 # Enable sixel support.
 if ENABLE_SIXEL
-dist_tmux_SOURCES += image.c image-sixel.c
+dist_tmux_hopper_SOURCES += image.c image-sixel.c
 endif
 
 # Add bits for fuzzing if enabled.
