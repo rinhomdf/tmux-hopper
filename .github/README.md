@@ -1,3 +1,16 @@
+# Intro 
+
+This is a re-purposed from the original README file in the tmux source tree.
+
+This is the README file for the tmux project, which is a terminal multiplexer. It provides information about the project, its dependencies, installation instructions, contributing guidelines, documentation resources, support channels, and licensing information.
+
+The intention of this repo is to fork the original tmux project and provide a version that re-uses the original codebase while wrapping some personal features around it. Namely the following:
+- YAML specification for tmux ssh connections (i.e. hopper)
+- Handling of sessions from the YAML specification
+
+
+--------
+
 # Welcome to tmux!
 
 tmux is a terminal multiplexer: it enables a number of terminals to be created,
